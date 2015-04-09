@@ -1,0 +1,7 @@
+mysql-connector-python==2.0.3
+numpy==1.9.2
+pytz==2015.2
+scipy==0.15.1
+simplejson==3.6.5
+yahoo-finance==1.1.4
+ystockquote==0.2.4
