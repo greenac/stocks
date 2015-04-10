@@ -20,7 +20,7 @@ class QuandConstants:
 class Quand:
     def __init__(self, name, info):
         self.constants = QuandConstants()
-        self.name = name
+        self.set_name(name, info)
         self.date = info[self.constants.date]
         self.open = float(info[self.constants.open])
         self.high = float(info[self.constants.high])
@@ -35,9 +35,34 @@ class Quand:
         self.adj_close = float(info[self.constants.adj_close])
         self.adj_volume = float(info[self.constants.adj_volume])
 
+    def set_name(self, name, info):
+        if self.constants.name in info:
+            self.name = info[self.constants.name]
+        else:
+            self.name = name
+        return None
+
     def __str__(self):
         info_string = property_to_string(self.name, '')
         info_string = property_to_string(self.date, info_string)
         info_string = property_to_string(self.high, info_string)
         info_string = property_to_string(self.low, info_string)
         return info_string
+
+    def as_dict(self):
+        return {
+            self.constants.name: self.name,
+            self.constants.date: self.date,
+            self.constants.open: self.open,
+            self.constants.high: self.high,
+            self.constants.low: self.low,
+            self.constants.close: self.close,
+            self.constants.volume: self.volume,
+            self.constants.ex_dividend: self.ex_dividend,
+            self.constants.split_ratio: self.split_ratio,
+            self.constants.adj_open: self.adj_open,
+            self.constants.adj_high: self.adj_high,
+            self.constants.adj_low: self.adj_low,
+            self.constants.adj_close: self.adj_close,
+            self.constants.adj_volume: self.adj_volume
+        }
